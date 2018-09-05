@@ -12,12 +12,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[];
 
-  constructor(private recipeServide: RecipeService,
+  constructor(private recipeService: RecipeService,
     private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.recipes = this.recipeServide.getRecipes();
+    this.recipes = this.recipeService.getRecipes();
+    this.recipeService.recipesChanged.subscribe(
+      (recipes: Recipe[]) => {
+        this.recipes = recipes;
+      }
+    );
   }
 
   onNewRecipe() {
