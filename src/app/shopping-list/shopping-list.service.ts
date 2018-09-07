@@ -10,17 +10,8 @@ export class ShoppingListService {
         new Ingredient('Bananas', 15)
     ];
 
-    getIngredients() {
-        return this.ingredients.slice();
-    }
-
     getIngredientById(id: number){
         return this.ingredients[id];
-    }
-
-    addIngredient(ingredient: Ingredient) {
-        this.ingredients.push(ingredient);
-        this.ingredientsChanged.next(this.ingredients.slice());
     }
 
     addIngredients(ingredients: Ingredient[]) {
