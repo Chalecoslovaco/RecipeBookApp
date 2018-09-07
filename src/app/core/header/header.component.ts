@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
 
   onSaveData() {
     this.dataStorageService.saveRecipes().subscribe(
-      (response: Response) => {
+      (response) => {
         console.log(response);
       }
     );
