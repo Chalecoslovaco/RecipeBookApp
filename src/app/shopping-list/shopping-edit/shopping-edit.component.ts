@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, EventEmitter, ViewChild, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -12,7 +12,7 @@ import * as fromShoppingList from '../store/shopping-list.reducer';
   templateUrl: './shopping-edit.component.html',
   styleUrls: ['./shopping-edit.component.css']
 })
-export class ShoppingEditComponent implements OnInit {
+export class ShoppingEditComponent implements OnInit, OnDestroy {
   @ViewChild('f') shoppinListForm: NgForm;
   subscription: Subscription;
   editMode = false;
@@ -51,5 +51,9 @@ export class ShoppingEditComponent implements OnInit {
 
   onDelete() {
     this.store.dispatch(new ShoppingListActions.DeleteIngredient());
+  }
+
+  ngOnDestroy() {
+    this.store.dispatch(new ShoppingListActions.StopEdit());
   }
 }
