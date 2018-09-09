@@ -10,18 +10,18 @@
         <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <ng-template [ngIf]="!isAuth()">
+        <ng-template [ngIf]="!(authState | async).auth">
             <li><a routerLink="/signup">Sign Up</a></li>
             <li><a routerLink="/signin">Sign In</a></li>
         </ng-template>
         <li><a 
             style="cursor: pointer;" 
             (click)="onSignOut()"
-            *ngIf="isAuth()">Sign Out</a></li>
+            *ngIf="(authState | async).auth">Sign Out</a></li>
         <li 
           class="dropdown" 
           appDropdown 
-          *ngIf="isAuth()">
+          *ngIf="(authState | async).auth">
           <a style="cursor: pointer;" class="dropdown-toggle" role="button">
             Manage <span class="caret"></span>
           </a>
