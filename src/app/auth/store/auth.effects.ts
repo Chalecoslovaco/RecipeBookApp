@@ -13,14 +13,14 @@ export class AuthEffects {
     authSignUp = this.actions$.ofType(AuthActions.TRY_SIGNUP)
         .pipe(map((action: AuthActions.TrySignUp) => {
             return action.payload;
-        }))
-        .pipe(switchMap((authData: {email: string, password: string}) => {
+        }),
+        switchMap((authData: {email: string, password: string}) => {
            return from(firebase.auth().createUserWithEmailAndPassword(authData.email, authData.password));
-        }))
-        .pipe(switchMap(() => {
+        }),
+        switchMap(() => {
             return from(firebase.auth().currentUser.getIdToken());
-        }))
-        .pipe(mergeMap((token: string) => {
+        }),
+        mergeMap((token: string) => {
             return [{type: AuthActions.SIGN_UP}, {type: AuthActions.SET_TOKEN, payload: token}];
         }));
 
@@ -28,14 +28,14 @@ export class AuthEffects {
     authSignIn = this.actions$.ofType(AuthActions.TRY_SIGNIN)
         .pipe(map((action: AuthActions.TrySignUp) => {
             return action.payload;
-        }))
-        .pipe(switchMap((authData: {email: string, password: string}) => {
+        }),
+        switchMap((authData: {email: string, password: string}) => {
            return from(firebase.auth().signInWithEmailAndPassword(authData.email, authData.password));
-        }))
-        .pipe(switchMap(() => {
+        }),
+        switchMap(() => {
             return from(firebase.auth().currentUser.getIdToken());
-        }))
-        .pipe(mergeMap((token: string) => {
+        }),
+        mergeMap((token: string) => {
             this.router.navigate(['/']);
             return [{type: AuthActions.SIGN_IN}, {type: AuthActions.SET_TOKEN, payload: token}];
         }));

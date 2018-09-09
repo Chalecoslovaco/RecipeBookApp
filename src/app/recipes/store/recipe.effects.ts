@@ -18,8 +18,8 @@ export class RecipeEffects {
                observe: 'body',
                responseType: 'json' 
             })
-        }))
-        .pipe(map((recipes) => {
+        }),
+        map((recipes) => {
                 for (let recipe of recipes)
                     if(!recipe['ingredients']) recipe['ingredients'] = [];
                     
@@ -28,8 +28,8 @@ export class RecipeEffects {
     
     @Effect({dispatch: false})
     recipeSave = this.actions$.ofType(RecipeActions.SAVE_RECIPES)
-        .pipe(withLatestFrom(this.store.select('recipes')))
-        .pipe(switchMap(([action, state]) => {
+        .pipe(withLatestFrom(this.store.select('recipes')),
+        switchMap(([action, state]) => {
             const request = new HttpRequest('PUT', 'https://recipebookapp-94eb0.firebaseio.com/recipes.json?',
             state.recipes, {reportProgress: true});
         
