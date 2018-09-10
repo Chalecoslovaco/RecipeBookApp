@@ -1,27 +1,49 @@
-# RecipesApp
+# RecipeBookApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
+Angular6 App built for training purposes within Angular 6 - The Complete Guide by Maximilian Schwarzmüller
 
-## Development server
+## Some topics covered within the code
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### >**master** branch
 
-## Code scaffolding
+* **Components**
+* **Models**
+* **Databinding**
+* **Directives**
+* **Services & Dependency Injection**
+* **Routing**
+* **Observables**
+* **Handling Forms**
+* **Pipes**
+* **Http & HttpClient**
+* **Authentication & Route Protection**
+* **Angular Modules and Optimization**
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### >**bonus** branch
 
-## Build
+* **Refactor the master code to work with NgRx**
+* **Angular Universal Server-Side Rendering**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+---
 
-## Running unit tests
+### Check that you have node and npm installed
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+To check if you have Node.js installed, run this command in your terminal:
+```
+node -v
+```
+To confirm that you have npm installed you can run this command in your terminal:
+```
+npm -v
+```
 
-## Running end-to-end tests
+## Getting Started
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```
+git clone https://github.com/Chalecoslovaco/RecipeBookApp.git
+cd RecipeBookApp
+npm install
+npm start
+```
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Go to http://localhost:4200/
